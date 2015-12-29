@@ -9,4 +9,13 @@ public class Obstacle : MonoBehaviour {
         GetComponent<Rigidbody2D>().velocity = velocity;
         GetComponent<Transform>().position = new Vector3(transform.position.x, transform.position.y - range * Random.value, transform.position.z);
 	}
+
+    void Update()
+    {
+        Vector2 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
+        if (screenPosition.x < -100)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
